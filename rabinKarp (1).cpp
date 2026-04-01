@@ -7,7 +7,7 @@
 using namespace std;
 
 tuple<vector<vector<tuple<int, int, int, int>>>, double, long long>
-rabinKarp(const vector<vector<char>>& grid, const vector<string>& keywords) {
+rabinKarp(const vector<string>& grid, const vector<string>& keywords) {
     int R = grid.size();
     if (R == 0) return {{}, 0.0, 0};
     int C = grid[0].size();

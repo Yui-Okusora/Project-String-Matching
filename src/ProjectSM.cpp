@@ -6,6 +6,10 @@
 #include <unordered_map>
 
 #include "BruteForce.hpp"
+#include "rabinKarp.hpp"
+#include "BoyerMooreAlgorithm.hpp"
+#include "ZAlgorithm.hpp"
+#include "KMP.hpp"
 
 using namespace std;
 
@@ -81,7 +85,7 @@ void printHelp()
     cout << R"(
 Usage: 01.exe -a [ algorithm ] -i [ input_file ] -o [ output_file ]
 Options:
-    -a [algorithm]      Select algorithm : bf, rk, kmp, bm
+    -a [algorithm]      Select algorithm : bf, rk, kmp, bm, za
     -i [input_file]     Path to user - provided data file
     -o [output_file]    Path to the result output file
 Example:
@@ -91,7 +95,7 @@ Example:
 
 int main(int args, char** argv)
 {
-    if (args > 7) { printHelp(); return 0; }
+    if (args != 7) { printHelp(); return 0; }
 
     if (strcmp(argv[1], "-a") != 0) { printHelp(); return 0; }
     if (strcmp(argv[3], "-i") != 0) { printHelp(); return 0; }
@@ -106,6 +110,10 @@ int main(int args, char** argv)
         >> algo;
 
     algo.insert({ "bf", { "Brute Force", bruteForce } });
+    algo.insert({ "rk", { "Rabin Karp", rabinKarp } });
+    algo.insert({ "kmp", { "KMP", searchGridKMP } });
+    algo.insert({ "bm", { "Boyer Moore", BoyerMooreAlgorithm } });
+    algo.insert({ "za", { "ZAlgorithm", ZAlgorithmSearch } });
 
     if(algo.count(argv[2]) == 0) { printHelp(); return 0; }
     if(!filesystem::exists(argv[4])) { printHelp(); return 0; }

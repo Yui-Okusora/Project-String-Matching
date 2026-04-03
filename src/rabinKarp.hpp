@@ -93,7 +93,8 @@ rabinKarp(const vector<string>& grid, const vector<string>& keywords) {
     }
 
     auto endTime = chrono::high_resolution_clock::now();
-    double totalTime = chrono::duration<double, std::nanoseconds>(endTime - startTime).count() / 1000000.0;
-
-    return {results, totalTime, total_compare};
+    auto totalTime = chrono::duration_cast<chrono::nanoseconds>(endTime - startTime).count();
+    double ms = totalTime / 1000000.0;
+    
+    return {results, ms, total_compare};
 }

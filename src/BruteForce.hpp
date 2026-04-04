@@ -24,7 +24,6 @@ bruteForce(const vector<string>& grid, const vector<string>& keywords) {
     for (const string& word : keywords) {
         vector<tuple<int, int, int, int>> word_matches;
         int len = word.length();
-        double comparisons = 0;
         for (int r = 0; r < R; ++r) {
             for (int c = 0; c < C; ++c) {
                 for (int d = 0; d < 4; ++d) {
@@ -34,7 +33,7 @@ bruteForce(const vector<string>& grid, const vector<string>& keywords) {
                     if (end_r >= 0 && end_r < R && end_c >= 0 && end_c < C) {
                         bool match = true;
                         for (int i = 0; i < len; ++i) {
-                            comparisons++;
+                            comp++;
                             if (grid[r + i * dr[d]][c + i * dc[d]] != word[i]) {
                                 match = false;
                                 break;
@@ -47,7 +46,6 @@ bruteForce(const vector<string>& grid, const vector<string>& keywords) {
                 }
             }
         }
-        if (!word_matches.empty()) comp += comparisons;
         all_occurrences.push_back(word_matches);
     }
 

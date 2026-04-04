@@ -76,11 +76,9 @@ tuple<vector<vector<tuple<int, int, int, int>>>, double, double> ZAlgorithmSearc
 
     auto start = chrono::high_resolution_clock::now();
     double comparisons = 0;
-    double total_compare = 0;
     tuple<vector<vector<tuple<int, int, int, int>>>, double, double> res;
 
     for (int i = 0; i < n; i++) {
-        comparisons = 0;
         int m = pat[i].size();
         vector<pair<int, int>> rowPositions;
         vector<pair<int, int>> colPositions;
@@ -95,7 +93,6 @@ tuple<vector<vector<tuple<int, int, int, int>>>, double, double> ZAlgorithmSearc
         }
 
         if (rowPositions.size() + colPositions.size() != 0) {
-            total_compare += comparisons;
             for (auto pos : rowPositions) {
                 temp.push_back({ pos.first, pos.second, pos.first, pos.second + m - 1 });
             }
@@ -111,7 +108,7 @@ tuple<vector<vector<tuple<int, int, int, int>>>, double, double> ZAlgorithmSearc
     double ms = duration.count() / 1000000.0; 
 
     get<1>(res) = ms;
-    get<2>(res) = total_compare;
+    get<2>(res) = comparisons;
 
     return res;
 }

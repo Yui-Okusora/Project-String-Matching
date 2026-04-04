@@ -14,7 +14,6 @@ rabinKarp(const vector<string>& grid, const vector<string>& keywords) {
 
     vector<vector<tuple<int, int, int, int>>> results(keywords.size());
     double comparisons = 0; 
-    double total_compare = 0;
     bool found = false;
     
     const int BASE = 256;
@@ -40,7 +39,6 @@ rabinKarp(const vector<string>& grid, const vector<string>& keywords) {
     for (size_t k = 0; k < keywords.size(); ++k) {
         int M = keywords[k].length();
         if (M == 0 || M > max(R, C)) continue; 
-        comparisons = 0;
         found = false;
         
         auto searchRay = [&](int sr, int sc, int dr, int dc) {
@@ -86,14 +84,10 @@ rabinKarp(const vector<string>& grid, const vector<string>& keywords) {
 
         for (int r = 0; r < R; r++) searchRay(r, 0, 0, 1); 
         for (int c = 0; c < C; c++) searchRay(0, c, 1, 0); 
-        if(found)
-        {
-            total_compare += comparisons;
-        }
     }
 
     auto endTime = chrono::high_resolution_clock::now();
-    double totalTime = chrono::duration<double, std::nanoseconds>(endTime - startTime).count() / 1000000.0;
+    double totalTime = chrono::duration<double, std::nano>(endTime - startTime).count() / 1000000.0;
 
-    return {results, totalTime, total_compare};
+    return {results, totalTime, comparisons};
 }

@@ -115,14 +115,11 @@ searchGridKMP(const vector<string>& grid, const vector<string>& keywords) {
                 }
             }
         }
-
-        if (found) {
-            total_comparisons += local_comparisons;
-        }
+        total_comparisons += local_comparisons;
     }
 
     auto end_time = high_resolution_clock::now();
-    double execution_time_ms = duration_cast<nanoseconds>(end_time - start_time).count() / 1000000.0;
+    double execution_time_ms = duration<double, nano>(end_time - start_time).count() / 1000000.0;
 
     return {all_results, total_comparisons, execution_time_ms};
 }

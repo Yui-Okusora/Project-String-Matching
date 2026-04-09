@@ -121,5 +121,5 @@ searchGridKMP(const vector<string>& grid, const vector<string>& keywords) {
     auto end_time = high_resolution_clock::now();
     double execution_time_ms = duration<double, nano>(end_time - start_time).count() / 1000000.0;
 
-    return {all_results, total_comparisons, execution_time_ms};
+    return {all_results, execution_time_ms, total_comparisons };
 }

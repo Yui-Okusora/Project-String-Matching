@@ -10,6 +10,8 @@ project("ProjectSM" LANGUAGES CXX)
 
 add_executable(ProjectSM "src/ProjectSM.cpp")
 
+set_target_properties(ProjectSM PROPERTIES OUTPUT_NAME "01")
+
 target_compile_features(ProjectSM PUBLIC cxx_std_17)
 
 if(MSVC)

@@ -49,31 +49,22 @@ void printStats(string filename, string name, vector<string>& keywords, const ve
     int K = keywords.size();
 
     for (int k = 0; k < K; ++k) {
-        cout << keywords[k] << ": ";
         fs << keywords[k] << ": ";
         if (occurrences[k].empty()) {
-            cout << "not found" << endl;
             fs << "not found" << endl;
         }
         else {
             for (size_t i = 0; i < occurrences[k].size(); ++i) {
                 auto [r1, c1, r2, c2] = occurrences[k][i];
-                cout << "(" << r1 << ", " << c1 << ") -> (" << r2 << ", " << c2 << ")";
                 fs << "(" << r1 << ", " << c1 << ") -> (" << r2 << ", " << c2 << ")";
                 if (i < occurrences[k].size() - 1) {
-                    cout << "; ";
                     fs << "; ";
                 }
             }
-            cout << endl;
             fs << endl;
         }
     }
 
-    cout << "-----------------------------------" << endl;
-    cout << "Algorithm: "<< name << endl;
-    cout << "Comparisons: " << (unsigned long long)comp << endl;
-    cout << fixed << setprecision(2) << "Execution Time: " << time << " ms" << endl;
     fs << "-----------------------------------" << endl;
     fs << "Algorithm: "<< name << endl;
     fs << "Comparisons: " << (unsigned long long)comp << endl;

@@ -38,7 +38,6 @@ TECHNICAL SPECIFICATIONS
 * Language: C++17.
 * Build System: CMake 3.18 or higher.
 * Compiler Support: MSVC and GCC.
-* Memory: Includes a stack size adjustment (32MB).
 
 ------------------------------------------------------------
 COMPILATION

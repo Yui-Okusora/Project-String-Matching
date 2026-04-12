@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.18) # Higher version required for better CUDA support
+cmake_minimum_required (VERSION 3.18)
 
 # Enable Hot Reload for MSVC
 if (POLICY CMP0141)
@@ -10,10 +10,6 @@ project("ProjectSM" LANGUAGES CXX)
 
 add_executable(ProjectSM "src/ProjectSM.cpp")
 
-set_target_properties(ProjectSM PROPERTIES OUTPUT_NAME "01")
+set_target_properties(ProjectSM PROPERTIES OUTPUT_NAME "crossword")
 
 target_compile_features(ProjectSM PUBLIC cxx_std_17)
-
-if(MSVC)
-    target_link_options(ProjectSM PRIVATE "/STACK:32000000")
-endif()

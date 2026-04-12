@@ -1,10 +1,9 @@
 @echo off
 SETLOCAL
 SET BUILD_DIR=build
-SET EXE_NAME=01.exe
-SET STACK_SIZE=32000000
+SET EXE_NAME=crossword.exe
 
-echo [INFO] Starting build process for Project-Sort...
+echo [INFO] Starting build process for Project-String-Matching...
 
 where cmake >nul 2>nul
 if %errorlevel% equ 0 (
@@ -27,7 +26,7 @@ if %errorlevel% equ 0 (
 where g++ >nul 2>nul
 if %errorlevel% equ 0 (
     echo [INFO] Compiling directly with g++...
-    g++ src/*.cpp -std=c++17 -Wl,--stack,%STACK_SIZE% -o %EXE_NAME%
+    g++ src/*.cpp -std=c++17 -o %EXE_NAME%
     
     if %errorlevel% equ 0 (
         echo [SUCCESS] Build completed via g++.
@@ -41,5 +40,5 @@ exit /b 1
 
 :finish
 echo [INFO] Executable is ready: %EXE_NAME%
-echo [INFO] You can now run commands like: %EXE_NAME% -a radix-sort input.txt -both
+echo [INFO] You can now run commands like: %EXE_NAME% -a kmp -i puzzle.txt -o solution.txt
 pause

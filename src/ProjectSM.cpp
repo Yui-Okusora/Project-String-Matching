@@ -71,26 +71,26 @@ void printStats(string filename, string name, vector<string>& keywords, const ve
     fs << fixed << setprecision(2) << "Execution Time: " << time << " ms" << endl;
 }
 
-void printHelp()
+void printHelp(char* name)
 {
     cout << R"(
-Usage: 01.exe -a [ algorithm ] -i [ input_file ] -o [ output_file ]
+Usage: )" << name << R"( -a [ algorithm ] -i [ input_file ] -o [ output_file ]
 Options:
     -a [algorithm]      Select algorithm : bf, rk, kmp, bm, za
     -i [input_file]     Path to user - provided data file
     -o [output_file]    Path to the result output file
 Example:
-    01.exe -a kmp -i puzzle.txt -o solution.txt
+    )" << name << R"( -a kmp -i puzzle.txt -o solution.txt
 )";
 }
 
 int main(int args, char** argv)
 {
-    if (args != 7) { printHelp(); return 0; }
+    if (args != 7) { printHelp(argv[0]); return 0; }
 
-    if (strcmp(argv[1], "-a") != 0) { printHelp(); return 0; }
-    if (strcmp(argv[3], "-i") != 0) { printHelp(); return 0; }
-    if (strcmp(argv[5], "-o") != 0) { printHelp(); return 0; }
+    if (strcmp(argv[1], "-a") != 0) { printHelp(argv[0]); return 0; }
+    if (strcmp(argv[3], "-i") != 0) { printHelp(argv[0]); return 0; }
+    if (strcmp(argv[5], "-o") != 0) { printHelp(argv[0]); return 0; }
 
     auto tmp = bruteForce;
     
@@ -106,8 +106,8 @@ int main(int args, char** argv)
     algo.insert({ "bm", { "Boyer Moore", BoyerMooreAlgorithm } });
     algo.insert({ "za", { "ZAlgorithm", ZAlgorithmSearch } });
 
-    if(algo.count(argv[2]) == 0) { printHelp(); return 0; }
-    if(!filesystem::exists(argv[4])) { printHelp(); return 0; }
+    if(algo.count(argv[2]) == 0) { printHelp(argv[0]); return 0; }
+    if(!filesystem::exists(argv[4])) { printHelp(argv[0]); return 0; }
 
     auto resAlgo = algo[argv[2]];
 

@@ -12,7 +12,7 @@
 HOW TO RUN
 ------------------------------------------------------------
 
-Usage : 01.exe -a [ algorithm ] -i [ input_file ] -o [ output_file ]
+Usage : crossword.exe -a [ algorithm ] -i [ input_file ] -o [ output_file ]
 
 Options :
 -a [ algorithm ] Select algorithm : bf , rk , kmp , bm, za
@@ -50,4 +50,4 @@ USING CMAKE (RECOMMENDED):
   4. cmake --build . --config Release
 
 OR:
-  Run build.bat.
+  Run build.bat for auto build.

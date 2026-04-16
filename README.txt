@@ -50,4 +50,4 @@ USING CMAKE (RECOMMENDED):
   4. cmake --build . --config Release
 
 OR:
-  Run build.bat for auto build.
+  Run build.bat on cmd.exe for auto build.
